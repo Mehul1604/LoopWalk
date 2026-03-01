@@ -6,6 +6,7 @@ from loopwalk_ai.graph.nodes import explanation_node, intent_node, scoring_node,
 # Import backend service
 from backend.services.maps_service import (
     get_many_routes,
+    get_routes_by_duration,
     enrich_route,
     enrich_with_crowd,
     enrich_with_safety,
@@ -83,6 +84,55 @@ def run_agent(
     state: AgentState = {
         "origin": origin,
         "destination": destination,
+        "query": user_query,
+        "routes": candidates,
+        "preferences": None,
+        "route_scores": None,
+        "chosen_route_id": None,
+        "explanation": None,
+    }
+
+    # 4️⃣ run graph
+    graph = build_graph()
+    output = graph.invoke(state)
+
+    return output, enriched_routes
+
+def run_agent_by_duration(
+    origin: str,
+    minutes: int,
+    user_query: str,
+    enrichment_queries: list[str],
+    num_variations: int = 8,
+):
+    """
+    Agent pipeline for time-based walking routes.
+    Returns:
+        final_agent_state,
+        enriched_routes
+    """
+
+    # 1️⃣ fetch candidate routes from duration boundary
+    routes = get_routes_by_duration(origin, minutes, num_variations)
+
+    enriched_routes = []
+
+    for r in routes:
+        r = enrich_route(r, enrichment_queries)
+        r = enrich_with_crowd(r)
+        r = enrich_with_safety(r)
+        enriched_routes.append(r)
+
+    # 2️⃣ convert to candidates
+    candidates = [
+        build_candidate(r, idx, enrichment_queries)
+        for idx, r in enumerate(enriched_routes)
+    ]
+
+    # 3️⃣ initial state
+    state: AgentState = {
+        "origin": origin,
+        "destination": f"{minutes}-minute walk",
         "query": user_query,
         "routes": candidates,
         "preferences": None,

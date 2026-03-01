@@ -1,4 +1,4 @@
-from loopwalk_ai.runner import run_agent
+from loopwalk_ai.runner import run_agent, run_agent_by_duration
 
 
 def get_best_route(
@@ -34,6 +34,28 @@ def get_best_route(
         # "scores": agent_state["route_scores"],
         # "distance_m": leg["distance"]["value"],
         # "duration_s": leg["duration"]["value"],
+    }
+
+def get_best_route_by_duration(
+    origin: str,
+    minutes: int,
+    user_query: str,
+    enrichment_queries: list[str],
+):
+    agent_state, enriched_routes = run_agent_by_duration(
+        origin,
+        minutes,
+        user_query,
+        enrichment_queries,
+    )
+
+    chosen_id = agent_state["chosen_route_id"]
+
+    return {
+        "route_id": chosen_id,
+        "summary": enriched_routes[chosen_id].get("summary", f"Route {chosen_id}"),
+        "route": enriched_routes[chosen_id],
+        "explanation": agent_state["explanation"],
     }
 
 if __name__ == "__main__":

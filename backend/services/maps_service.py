@@ -179,6 +179,41 @@ def get_many_routes(origin: str, destination: str, num_variations=6):
 
     return all_routes
 
+def get_routes_by_duration(origin: str, minutes: int, num_variations=8):
+    """
+    Generate candidate walking routes that last ~X minutes
+    by routing from origin to points on a circle boundary.
+    """
+
+    origin_loc = geocode_address(origin)
+
+    # Approx walking radius
+    radius_m = minutes * 80  # 80m per minute walking speed
+
+    # Convert meters → degrees latitude
+    lat_radius = radius_m / 111_000
+
+    # Longitude depends on latitude
+    lng_radius = radius_m / (111_000 * math.cos(math.radians(origin_loc["lat"])))
+
+    boundary_points = []
+
+    for i in range(num_variations):
+        angle = (360 / num_variations) * i
+        rad = math.radians(angle)
+
+        lat = origin_loc["lat"] + lat_radius * math.sin(rad)
+        lng = origin_loc["lng"] + lng_radius * math.cos(rad)
+
+        boundary_points.append({"lat": lat, "lng": lng})
+
+    routes = []
+
+    for pt in boundary_points:
+        routes.extend(fetch_routes(origin_loc, pt))
+
+    return routes
+
 def pick_best_places(places, top_n=5):
     """
     Rank places by distance and return top N.

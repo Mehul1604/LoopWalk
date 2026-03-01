@@ -11,6 +11,15 @@ class RouteRequest(BaseModel):
         example=["cafe", "park"]
     )
 
+class DurationRouteRequest(BaseModel):
+    origin: str = Field(..., example="Millennium Park, Chicago")
+    minutes: int = Field(..., example=20, ge=5, le=120)
+    user_query: str = Field(..., example="I want a calm scenic walk with a cafe")
+    enrichment_queries: List[str] = Field(
+        default_factory=lambda: ["cafe"],
+        example=["cafe", "park"]
+    )
+
 
 class RouteResponse(BaseModel):
     route_id: int

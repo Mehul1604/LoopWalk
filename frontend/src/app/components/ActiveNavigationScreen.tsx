@@ -12,7 +12,7 @@ import {
   Home
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import buxtonRdImage from "figma:asset/c853ed582377d4d4af9b1da8d6e72d7a47b246a5.png";
+import buxtonRdImage from "figma:assets/c853ed582377d4d4af9b1da8d6e72d7a47b246a5.png";
 
 interface RouteStep {
   name: string;
@@ -351,7 +351,7 @@ export function ActiveNavigationScreen() {
           {/* New Route Button */}
           <button
             onClick={handleStartNewRoute}
-            className="w-full h-12 rounded-xl flex items-center justify-center gap-2 border-2 border-primary text-primary transition-all hover:bg-accent/10"
+            className="w-full h-12 rounded-xl flex items-center justify-center gap-2 bg-gradient-to-r from-[#E4002B] to-[#FF6D6D] text-white transition-all hover:opacity-90 active:bg-[#E4002B] active:bg-none"
           >
             <Home className="w-5 h-5" />
             <span className="font-medium">Start New Route</span>

@@ -1,4 +1,4 @@
-import image_8774b0bd1df166ad114767342f591fd7cb12d3c3 from 'figma:asset/8774b0bd1df166ad114767342f591fd7cb12d3c3.png'
+import image_8774b0bd1df166ad114767342f591fd7cb12d3c3 from 'figma:assets/8774b0bd1df166ad114767342f591fd7cb12d3c3.png'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { ChevronLeft, MapPin, Clock, Footprints, Navigation } from "lucide-react";
@@ -261,7 +261,7 @@ export function CalibratedMapScreen() {
         <div className="space-y-3">
           <Button
             onClick={handleStartWalk}
-            className="w-full h-14 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="w-full h-14 rounded-xl bg-gradient-to-r from-[#E4002B] to-[#FF6D6D] hover:opacity-90 active:bg-[#E4002B] active:bg-none text-white"
           >
             <Navigation className="mr-2 w-5 h-5" />
             Start Walking

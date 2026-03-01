@@ -1,3 +1,4 @@
+import image_d6934776d937b30755bde312d201730947b967dc from 'figma:assets/d6934776d937b30755bde312d201730947b967dc.png'
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
@@ -5,8 +6,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Slider } from "./ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import backgroundImage from "figma:asset/9b370f66781cdba43118b7ea76c7124ba907cf9f.png";
-import logoImage from "figma:asset/35efb08e2b33d16febc694609375fbf65a4ca3da.png";
+import backgroundImage from "figma:assets/9b370f66781cdba43118b7ea76c7124ba907cf9f.png";
+import logoImage from "figma:assets/35efb08e2b33d16febc694609375fbf65a4ca3da.png";
 
 // Chicago Loop popular destinations
 const POPULAR_DESTINATIONS = [
@@ -61,11 +62,32 @@ export function StartScreen() {
           </div>
 
           {/* Route paths */}
-          <img 
-            src={backgroundImage} 
-            alt="Chicago Loop"
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
-          />
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#86BBD8]/30 via-[#F2F9FC] to-[#86BBD8]/20">
+            {/* Mock street grid */}
+            <img 
+              src={image_d6934776d937b30755bde312d201730947b967dc} 
+              alt="Satellite view"
+              className="absolute inset-0 w-full h-full object-cover opacity-80"
+            />
+            
+            {/* Mock landmarks */}
+            <div className="absolute top-12 left-16 w-8 h-8 bg-[#233642]/20 rounded"></div>
+            <div className="absolute top-32 right-20 w-6 h-10 bg-[#233642]/20 rounded"></div>
+            <div className="absolute bottom-16 left-24 w-12 h-6 bg-[#9EE493]/30 rounded"></div>
+            
+            {/* Current location marker */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              {/* Pulsing circle */}
+              <div className="absolute w-16 h-16 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-[#336699]/20 rounded-full animate-ping"></div>
+              {/* Location dot */}
+              <div className="relative w-5 h-5 bg-[#336699] border-[3px] border-white rounded-full shadow-lg"></div>
+            </div>
+            
+            {/* Location label */}
+            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-md text-xs">
+              <span className="text-[#336699]">📍</span> Current Location
+            </div>
+          </div>
 
           {/* Location markers */}
           
@@ -73,11 +95,7 @@ export function StartScreen() {
 
         {/* Overlay title */}
         <div className="absolute top-0 left-0 pt-6 px-6">
-          <img 
-            src={logoImage} 
-            alt="LoopWalk" 
-            className="h-16 w-auto drop-shadow-lg"
-          />
+          
         </div>
       </div>
 
@@ -97,6 +115,17 @@ export function StartScreen() {
 
           <TabsContent value="destination" className="mt-6 space-y-6">
             <div>
+              {/* Current Location Display */}
+              <div className="mb-4 p-4 bg-card border border-border rounded-xl flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#336699]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-3 h-3 bg-[#336699] rounded-full"></div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-muted-foreground mb-0.5">Current Location</p>
+                  <p className="text-sm font-medium truncate">Chicago Loop, IL</p>
+                </div>
+              </div>
+              
               <Input
                 type="text"
                 placeholder="Enter destination..."
@@ -174,7 +203,7 @@ export function StartScreen() {
           <Button
             onClick={handleContinue}
             disabled={!canContinue}
-            className="w-full h-14 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
+            className="w-full h-14 rounded-xl bg-[#E4002B] bg-gradient-to-r from-[#E4002B] to-[#E4002B]/80 hover:opacity-90 active:bg-[#E4002B] active:bg-none text-white disabled:opacity-50"
           >
             Continue
             <ArrowRight className="ml-2 w-5 h-5" />

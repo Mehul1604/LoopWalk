@@ -1,4 +1,4 @@
-import imgAppleWatchSeries1046Mm1 from "figma:asset/e6170f9cb188eb4718c90deb8d4b36d8fdbad1df.png";
+import imgAppleWatchSeries1046Mm1 from "figma:assets/e6170f9cb188eb4718c90deb8d4b36d8fdbad1df.png";
 
 function Button() {
   return (

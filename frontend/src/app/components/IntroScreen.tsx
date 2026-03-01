@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import imgLogo from "figma:asset/e6170f9cb188eb4718c90deb8d4b36d8fdbad1df.png";
+import imgLogo from "figma:asset/947465014baeb788efe6b3e117a74e8a3f3c16f5.png";
 
 export function IntroScreen() {
   const navigate = useNavigate();
@@ -8,12 +8,13 @@ export function IntroScreen() {
     <div className="min-h-screen flex flex-col items-center justify-center max-w-[430px] mx-auto bg-white">
       {/* Logo */}
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-52 h-[248px] relative">
+        <div className="w-52 h-[248px] relative flex flex-col items-center justify-center">
           <img 
             src={imgLogo} 
             alt="LoopWalk AI Logo" 
-            className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+            className="w-32 h-auto object-contain pointer-events-none mx-auto"
           />
+          <h1 className="text-2xl font-medium text-foreground mt-4">LoopWalk</h1>
         </div>
       </div>
 
@@ -21,7 +22,7 @@ export function IntroScreen() {
       <div className="w-full px-[62.5px] pb-12">
         <button
           onClick={() => navigate("/start")}
-          className="w-full h-[56px] rounded-full transition-colors bg-primary text-primary-foreground hover:bg-primary/90"
+          className="w-full h-[56px] rounded-full transition-colors bg-gradient-to-r from-[#E4002B] to-[#FF6D6D] text-white hover:opacity-90 active:bg-[#E4002B] active:bg-none"
         >
           <p className="font-medium leading-[24px] text-[16px] text-center tracking-[-0.3125px]">
             Get Started

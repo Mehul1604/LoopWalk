@@ -351,7 +351,7 @@ export function ActiveNavigationScreen() {
           {/* New Route Button */}
           <button
             onClick={handleStartNewRoute}
-            className="w-full h-12 rounded-xl flex items-center justify-center gap-2 border-2 border-primary text-primary transition-all hover:bg-accent/10"
+            className="w-full h-12 rounded-xl flex items-center justify-center gap-2 bg-gradient-to-r from-[#E4002B] to-[#FF6D6D] text-white transition-all hover:opacity-90 active:bg-[#E4002B] active:bg-none"
           >
             <Home className="w-5 h-5" />
             <span className="font-medium">Start New Route</span>

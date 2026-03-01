@@ -12,7 +12,7 @@ import {
   Home
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import buxtonRdImage from "figma:asset/c853ed582377d4d4af9b1da8d6e72d7a47b246a5.png";
+import buxtonRdImage from "figma:assets/c853ed582377d4d4af9b1da8d6e72d7a47b246a5.png";
 
 interface RouteStep {
   name: string;

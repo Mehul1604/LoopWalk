@@ -14,6 +14,8 @@ export default defineConfig({
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      // Resolve virtual Figma asset imports like `figma:assets/xxx.png`
+      'figma:assets': path.resolve(__dirname, './src/assets'),
     },
   },
 

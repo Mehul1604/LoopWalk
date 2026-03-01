@@ -1,4 +1,4 @@
-import image_d6934776d937b30755bde312d201730947b967dc from 'figma:asset/d6934776d937b30755bde312d201730947b967dc.png'
+import image_d6934776d937b30755bde312d201730947b967dc from 'figma:assets/d6934776d937b30755bde312d201730947b967dc.png'
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
@@ -6,8 +6,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Slider } from "./ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import backgroundImage from "figma:asset/9b370f66781cdba43118b7ea76c7124ba907cf9f.png";
-import logoImage from "figma:asset/35efb08e2b33d16febc694609375fbf65a4ca3da.png";
+import backgroundImage from "figma:assets/9b370f66781cdba43118b7ea76c7124ba907cf9f.png";
+import logoImage from "figma:assets/35efb08e2b33d16febc694609375fbf65a4ca3da.png";
 
 // Chicago Loop popular destinations
 const POPULAR_DESTINATIONS = [

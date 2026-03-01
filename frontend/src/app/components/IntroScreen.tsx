@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import imgLogo from "figma:asset/947465014baeb788efe6b3e117a74e8a3f3c16f5.png";
+import imgLogo from "figma:assets/947465014baeb788efe6b3e117a74e8a3f3c16f5.png";
 
 export function IntroScreen() {
   const navigate = useNavigate();

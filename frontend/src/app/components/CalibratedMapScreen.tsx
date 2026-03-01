@@ -1,4 +1,4 @@
-import image_8774b0bd1df166ad114767342f591fd7cb12d3c3 from 'figma:asset/8774b0bd1df166ad114767342f591fd7cb12d3c3.png'
+import image_8774b0bd1df166ad114767342f591fd7cb12d3c3 from 'figma:assets/8774b0bd1df166ad114767342f591fd7cb12d3c3.png'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { ChevronLeft, MapPin, Clock, Footprints, Navigation } from "lucide-react";

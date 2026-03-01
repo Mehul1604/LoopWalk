@@ -10,6 +10,6 @@ llm = ChatOpenAI(
     model=MODEL_NAME
 )
 
-# test llm working
-response = llm.invoke("Hello, world!")
-print(response.content)
+# # test llm working
+# response = llm.invoke("Hello, world!")
+# print(response.content)
